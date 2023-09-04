@@ -1,7 +1,10 @@
+import { useNavigation } from "@react-navigation/native";
+import { Pressable } from "react-native";
 import React from 'react';
 import { SafeAreaView, StyleSheet, View, Text, Image, Button, Linking } from 'react-native';
 
 const AppInfoScreen = () => {
+  const navigation = useNavigation();
   return <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
         <Image style={styles.logo} source={{
@@ -14,12 +17,16 @@ const AppInfoScreen = () => {
         <Button title="Send Feedback" onPress={() => {}} />
       </View>
       <View style={styles.linkContainer}>
-        <Text style={styles.link} onPress={() => Linking.openURL('https://www.example.com/terms')}>
+        <Pressable onPress={() => {
+        navigation.navigate("ScreenAI5");
+      }}><Text style={styles.link} onPress={() => Linking.openURL('https://www.example.com/terms')}>
           Terms and Conditions
-        </Text>
-        <Text style={styles.link} onPress={() => Linking.openURL('https://www.example.com/privacy')}>
+        </Text></Pressable>
+        <Pressable onPress={() => {
+        navigation.navigate("ScreenAI6");
+      }}><Text style={styles.link} onPress={() => Linking.openURL('https://www.example.com/privacy')}>
           Privacy Policy
-        </Text>
+        </Text></Pressable>
       </View>
     </SafeAreaView>;
 };
